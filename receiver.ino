@@ -585,6 +585,80 @@ void loop() {
       case 10:
         performGenericTrack(10, "confused");
         break;
+      
+      case 11:
+        performGenericTrack(11, "neutral");   // Playful sarcasm
+        break;
+
+      case 12:
+        performGenericTrack(12, "sad");       // Concerned
+        break;
+
+      case 13:
+        performGenericTrack(13, "sad");       // Apologetic
+        break;
+
+      case 14:
+        performGenericTrack(14, "confused");  // Nervous rambling
+        break;
+
+      case 15:
+        performGenericTrack(15, "happy");     // Hyper / silly
+        break;
+
+      case 16:
+        performGenericTrack(16, "neutral");   // Confident / cool
+        break;
+
+      case 17:
+        performGenericTrack(17, "excited");   // Heroic / dramatic
+        break;
+
+      case 18:
+        performGenericTrack(18, "confused");  // Sneaky whisper
+        break;
+
+      case 19:
+        performGenericTrack(19, "excited");   // Super excited
+        break;
+
+      case 20:
+        performGenericTrack(20, "neutral");   // Mock offended
+        break;
+
+      case 21:
+        performGenericTrack(21, "sad");       // Tired / exhausted
+        break;
+
+      case 22:
+        performGenericTrack(22, "sad");       // Dramatically sad
+        break;
+
+      case 23:
+        performGenericTrack(23, "happy");     // Mischievous
+        break;
+
+      case 24:
+        performGenericTrack(24, "angry");     // Serious / cold
+        break;
+
+      case 25:
+        performGenericTrack(25, "confused");  // Shocked
+        break;
+
+      case 26:
+        performGenericTrack(26, "happy");     // Gentle / supportive
+        break;
+
+      case 27:
+        performGenericTrack(27, "excited");   // Mock dramatic
+        break;
+
+      case 28:
+        performGenericTrack(28, "neutral");   // Calm resolution
+        break;
+      
+      
         
       // Continue pattern for all 28 tracks...
       
