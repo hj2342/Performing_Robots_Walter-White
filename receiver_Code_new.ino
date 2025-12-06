@@ -1,6 +1,7 @@
 // =====================================================================
 //                    INTEGRATED ROBOT RECEIVER
-//          22 Tracks with Custom Choreography & LED Moods
+//          23 Tracks with Custom Choreography & LED Moods
+//                    CORRECTED DIALOGUE ORDER
 // =====================================================================
 
 // -------------------- NRF24L01 SETUP --------------------
@@ -289,8 +290,17 @@ void headTilt() {
   delay(800);
 }
 
+// Firm stance - possessive
+void firmStance() {
+  r_shoulder.write(70);
+  l_shoulder.write(50);
+  r_arm.write(180);
+  l_arm.write(0);
+  delay(1000);
+}
+
 // =====================================================================
-//                   PERFORMANCE FUNCTIONS (Tracks 1-22)
+//                   PERFORMANCE FUNCTIONS (Tracks 1-23)
 // =====================================================================
 
 // Track 1: "You've been practicing..." - Playful/Flirtatious
@@ -428,14 +438,32 @@ void performTrack007() {
   initialPose();
 }
 
-// Track 8: "Visual superiority?" - Confused
+// Track 8: "I want the coffee machine." - Firm/Possessive
 void performTrack008() {
-  Serial.println(F("Track 8: Confused"));
+  Serial.println(F("Track 8: Firm/Possessive"));
+  
+  initialPose();
+  setMood(200, 50, 0, 180, 40, 0);  // Red-orange - possessive
+  
+  musicPlayer.startPlayingFile("track008.mp3");
+  
+  delay(300);
+  firmStance();
+  delay(800);
+  pointingGesture();
+  
+  while (musicPlayer.playingMusic) delay(100);
+  initialPose();
+}
+
+// Track 9: "Visual superiority?" - Confused/Annoyed
+void performTrack009() {
+  Serial.println(F("Track 9: Confused"));
   
   initialPose();
   setMood(150, 0, 255, 100, 0, 200);  // Purple
   
-  musicPlayer.startPlayingFile("track008.mp3");
+  musicPlayer.startPlayingFile("track009.mp3");
   
   delay(400);
   headTilt();
@@ -446,14 +474,14 @@ void performTrack008() {
   initialPose();
 }
 
-// Track 9: "Did I just lose custody..." - Defeated
-void performTrack009() {
-  Serial.println(F("Track 9: Defeated"));
+// Track 10: "Did I just lose custody..." - Defeated
+void performTrack010() {
+  Serial.println(F("Track 10: Defeated"));
   
   initialPose();
   setMood(0, 0, 200, 50, 0, 150);  // Dark blue
   
-  musicPlayer.startPlayingFile("track009.mp3");
+  musicPlayer.startPlayingFile("track010.mp3");
   
   delay(800);
   handsUp();
@@ -464,14 +492,14 @@ void performTrack009() {
   initialPose();
 }
 
-// Track 10: "It's just stuff, kid..." - Dismissive
-void performTrack010() {
-  Serial.println(F("Track 10: Dismissive"));
+// Track 11: "It's just stuff, kid..." - Dismissive
+void performTrack011() {
+  Serial.println(F("Track 11: Dismissive"));
   
   initialPose();
   setMood(255, 100, 0, 200, 80, 0);  // Orange
   
-  musicPlayer.startPlayingFile("track010.mp3");
+  musicPlayer.startPlayingFile("track011.mp3");
   
   delay(1500);
   shoulderShrug();
@@ -484,14 +512,14 @@ void performTrack010() {
   initialPose();
 }
 
-// Track 11: "Go put that phone down." - Authoritative
-void performTrack011() {
-  Serial.println(F("Track 11: Authoritative"));
+// Track 12: "Go put that phone down." - Authoritative
+void performTrack012() {
+  Serial.println(F("Track 12: Authoritative"));
   
   initialPose();
   setMood(255, 50, 0, 200, 40, 0);  // Red-orange
   
-  musicPlayer.startPlayingFile("track011.mp3");
+  musicPlayer.startPlayingFile("track012.mp3");
   
   delay(300);
   pointingGesture();
@@ -500,14 +528,14 @@ void performTrack011() {
   initialPose();
 }
 
-// Track 12: "What? Give me that." - Panicked
-void performTrack012() {
-  Serial.println(F("Track 12: Panicked"));
+// Track 13: "What? Give me that." - Panicked
+void performTrack013() {
+  Serial.println(F("Track 13: Panicked"));
   
   initialPose();
   setMood(255, 255, 0, 255, 200, 0);  // Yellow - panic
   
-  musicPlayer.startPlayingFile("track012.mp3");
+  musicPlayer.startPlayingFile("track013.mp3");
   
   delay(200);
   reachingGrab();
@@ -517,14 +545,14 @@ void performTrack012() {
   initialPose();
 }
 
-// Track 13: "Stop! That's private..." - Desperate
-void performTrack013() {
-  Serial.println(F("Track 13: Desperate"));
+// Track 14: "Stop! That's private..." - Desperate
+void performTrack014() {
+  Serial.println(F("Track 14: Desperate"));
   
   initialPose();
   setMood(255, 200, 0, 255, 150, 0);  // Yellow-orange
   
-  musicPlayer.startPlayingFile("track013.mp3");
+  musicPlayer.startPlayingFile("track014.mp3");
   
   delay(200);
   handsUp();
@@ -536,14 +564,14 @@ void performTrack013() {
   initialPose();
 }
 
-// Track 14: "You don't understand..." - Defensive
-void performTrack014() {
-  Serial.println(F("Track 14: Defensive"));
+// Track 15: "You don't understand..." - Defensive
+void performTrack015() {
+  Serial.println(F("Track 15: Defensive"));
   
   initialPose();
   setMood(200, 0, 200, 150, 0, 150);  // Purple - conflicted
   
-  musicPlayer.startPlayingFile("track014.mp3");
+  musicPlayer.startPlayingFile("track015.mp3");
   
   delay(1500);
   armsSpread();
@@ -556,14 +584,14 @@ void performTrack014() {
   initialPose();
 }
 
-// Track 15: "Where did you even find that?" - Guilty
-void performTrack015() {
-  Serial.println(F("Track 15: Guilty"));
+// Track 16: "Where did you even find that?" - Guilty
+void performTrack016() {
+  Serial.println(F("Track 16: Guilty"));
   
   initialPose();
   setMood(0, 0, 100, 50, 0, 80);  // Dim blue - guilty
   
-  musicPlayer.startPlayingFile("track015.mp3");
+  musicPlayer.startPlayingFile("track016.mp3");
   
   delay(500);
   headDown();
@@ -574,14 +602,14 @@ void performTrack015() {
   initialPose();
 }
 
-// Track 16: "Wait—I didn't actually—" - Protesting
-void performTrack016() {
-  Serial.println(F("Track 16: Protesting"));
+// Track 17: "Wait—I didn't actually—" - Protesting
+void performTrack017() {
+  Serial.println(F("Track 17: Protesting"));
   
   initialPose();
   setMood(255, 255, 0, 200, 200, 0);  // Yellow
   
-  musicPlayer.startPlayingFile("track016.mp3");
+  musicPlayer.startPlayingFile("track017.mp3");
   
   delay(300);
   handsUp();
@@ -592,14 +620,48 @@ void performTrack016() {
   initialPose();
 }
 
-// Track 17: "Why do YOU have HER phone?" - Angry/Confused
-void performTrack017() {
-  Serial.println(F("Track 17: Angry/Confused"));
+// Track 18: "You're not helping." - Frustrated
+void performTrack018() {
+  Serial.println(F("Track 18: Frustrated"));
+  
+  initialPose();
+  setMood(200, 200, 200, 150, 150, 150);  // Dim white - exhausted
+  
+  musicPlayer.startPlayingFile("track018.mp3");
+  
+  delay(400);
+  shoulderShrug();
+  
+  while (musicPlayer.playingMusic) delay(100);
+  initialPose();
+}
+
+// Track 19: "Hold on. Why is the Judge..." - Suspicious
+void performTrack019() {
+  Serial.println(F("Track 19: Suspicious"));
+  
+  initialPose();
+  setMood(200, 100, 0, 150, 80, 0);  // Orange - suspicious
+  
+  musicPlayer.startPlayingFile("track019.mp3");
+  
+  delay(800);
+  headTilt();
+  delay(1200);
+  pointingGesture();
+  
+  while (musicPlayer.playingMusic) delay(100);
+  initialPose();
+}
+
+// Track 20: "Why do YOU have HER phone?" - Angry/Confused
+void performTrack020() {
+  Serial.println(F("Track 20: Angry/Confused"));
   
   initialPose();
   setMood(255, 0, 100, 200, 0, 100);  // Red-purple mix
   
-  musicPlayer.startPlayingFile("track017.mp3");
+  musicPlayer.startPlayingFile("track020.mp3");
   
   delay(400);
   pointingGesture();
@@ -611,14 +673,14 @@ void performTrack017() {
   initialPose();
 }
 
-// Track 18: "IT LOOKS LIKE YOU WERE SLEEPING..." - Explosive
-void performTrack018() {
-  Serial.println(F("Track 18: Explosive"));
+// Track 21: "IT LOOKS LIKE YOU WERE SLEEPING..." - Explosive
+void performTrack021() {
+  Serial.println(F("Track 21: Explosive"));
   
   initialPose();
   setMood(255, 0, 0, 255, 0, 0);  // Bright red
   
-  musicPlayer.startPlayingFile("track018.mp3");
+  musicPlayer.startPlayingFile("track021.mp3");
   
   delay(300);
   angryFists();
@@ -630,14 +692,14 @@ void performTrack018() {
   initialPose();
 }
 
-// Track 19: "I cannot BELIEVE this..." - Betrayed
-void performTrack019() {
-  Serial.println(F("Track 19: Betrayed"));
+// Track 22: "I cannot BELIEVE this..." - Betrayed
+void performTrack022() {
+  Serial.println(F("Track 22: Betrayed"));
   
   initialPose();
   setMood(255, 0, 0, 200, 0, 0);  // Start red
   
-  musicPlayer.startPlayingFile("track019.mp3");
+  musicPlayer.startPlayingFile("track022.mp3");
   
   delay(1000);
   explosiveGesture();
@@ -652,51 +714,17 @@ void performTrack019() {
   initialPose();
 }
 
-// Track 20: "So what now?" - Resigned
-void performTrack020() {
-  Serial.println(F("Track 20: Resigned"));
+// Track 23: "So what now?" - Resigned
+void performTrack023() {
+  Serial.println(F("Track 23: Resigned"));
   
   initialPose();
   setMood(0, 0, 100, 0, 0, 80);  // Dim blue
   
-  musicPlayer.startPlayingFile("track020.mp3");
+  musicPlayer.startPlayingFile("track023.mp3");
   
   delay(800);
   slumpedPosture();
-  
-  while (musicPlayer.playingMusic) delay(100);
-  initialPose();
-}
-
-// Track 21: "You're not helping." - Frustrated
-void performTrack021() {
-  Serial.println(F("Track 21: Frustrated"));
-  
-  initialPose();
-  setMood(200, 200, 200, 150, 150, 150);  // Dim white - exhausted
-  
-  musicPlayer.startPlayingFile("track021.mp3");
-  
-  delay(400);
-  shoulderShrug();
-  
-  while (musicPlayer.playingMusic) delay(100);
-  initialPose();
-}
-
-// Track 22: "Hold on. Why is the Judge..." - Suspicious
-void performTrack022() {
-  Serial.println(F("Track 22: Suspicious"));
-  
-  initialPose();
-  setMood(200, 100, 0, 150, 80, 0);  // Orange - suspicious
-  
-  musicPlayer.startPlayingFile("track022.mp3");
-  
-  delay(800);
-  headTilt();
-  delay(1200);
-  pointingGesture();
   
   while (musicPlayer.playingMusic) delay(100);
   initialPose();
@@ -770,7 +798,8 @@ void setupServoMotors() {
 void setup() {
   Serial.begin(9600);
   Serial.println(F("===================================="));
-  Serial.println(F("   ROBOT RECEIVER - 22 TRACKS"));
+  Serial.println(F("   ROBOT RECEIVER - 23 TRACKS"));
+  Serial.println(F("   CORRECTED DIALOGUE ORDER"));
   Serial.println(F("===================================="));
 
   setupMusicMakerShield();
@@ -801,7 +830,7 @@ void loop() {
     Serial.print(F("Command: "));
     Serial.println(data.stateNumber);
 
-    // Execute performance based on track number (1-22)
+    // Execute performance based on track number (1-23)
     switch (data.stateNumber) {
       case 1:  performTrack001(); break;
       case 2:  performTrack002(); break;
@@ -825,6 +854,7 @@ void loop() {
       case 20: performTrack020(); break;
       case 21: performTrack021(); break;
       case 22: performTrack022(); break;
+      case 23: performTrack023(); break;
       
       default:
         Serial.println(F("Invalid track"));
