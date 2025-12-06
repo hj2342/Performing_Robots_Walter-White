@@ -830,8 +830,20 @@ void loop() {
     Serial.print(F("Command: "));
     Serial.println(data.stateNumber);
 
-    // Execute performance based on track number (1-23)
+    // Execute performance based on state number (0-23)
+    // State 0 = Initial pose (no dialogue)
+    // States 1-23 = Dialogues (track001.mp3 - track023.mp3)
     switch (data.stateNumber) {
+      case 0:
+        Serial.println(F("State 0: Initial pose"));
+        initialPose();
+        setEyesColor(0, 255, 0);  // Green - ready
+        setCrownColor(0, 255, 0);
+        delay(500);
+        setEyesColor(0, 0, 0);
+        setCrownColor(0, 0, 0);
+        break;
+        
       case 1:  performTrack001(); break;
       case 2:  performTrack002(); break;
       case 3:  performTrack003(); break;
@@ -857,7 +869,8 @@ void loop() {
       case 23: performTrack023(); break;
       
       default:
-        Serial.println(F("Invalid track"));
+        Serial.print(F("Invalid state: "));
+        Serial.println(data.stateNumber);
         setMood(150, 0, 255, 100, 0, 200);
         delay(1000);
         setEyesColor(0, 0, 0);
